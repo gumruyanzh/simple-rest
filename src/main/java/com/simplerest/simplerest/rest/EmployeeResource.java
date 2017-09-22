@@ -4,29 +4,33 @@ package com.simplerest.simplerest.rest;
 import com.simplerest.simplerest.rest.entity.EmployeeEntity;
 
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/employee")
 public class EmployeeResource {
 
     @Inject
-    PersistenceHelper helper;
+    EmployeeService employeeService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<EmployeeEntity> getAllEmployees() {
-        EntityManager em = helper.getEntityManager();
-        return em.createNamedQuery("EmployeeEntity.findAll", EmployeeEntity.class).getResultList();
-//        try {
-//
-//        } finally {
-//            em.close();
-//        }
+        return employeeService.getAllEmployees();
+    }
 
+    @GET
+    @Path(("/{id}"))
+    @Produces(MediaType.APPLICATION_JSON)
+    public EmployeeEntity findById(@PathParam("id") int id){
+        return employeeService.findById(id);
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void addEmployee(EmployeeEntity employeeEntity){
+        employeeService.addNewEmployee(employeeEntity);
     }
 }

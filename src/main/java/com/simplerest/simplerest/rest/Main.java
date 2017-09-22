@@ -8,10 +8,10 @@ import org.wildfly.swarm.jaxrs.JAXRSArchive;
 
 public class Main {
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 
         Swarm swarm = new Swarm();
-        String useDB = System.getProperty("swarm.use.db", "mysql");
+        //String useDB = System.getProperty("swarm.use.db", "mysql");
         swarm.fraction(datasourceWithMysql());
 
 
@@ -19,13 +19,16 @@ public class Main {
         deployment.addResource(HelloWorldEndpoint.class);
         deployment.addResource(MyResource.class);
         deployment.addResource(EmployeeResource.class);
-        deployment.addAllDependencies();
-        deployment.addPackage("com.simplerest.simplerest.rest");
-        deployment.addPackage("com.simplerest.simplerest.rest.entity");
 
         // WEB Resources
         deployment.addAsWebInfResource(
-                new ClassLoaderAsset("META-INF/persistence.xml", Main.class.getClassLoader()), "persistence.xml");
+                new ClassLoaderAsset("META-INF/persistence.xml", Main.class.getClassLoader()), "classes/META-INF/persistence.xml");
+
+        deployment.addAsWebInfResource(
+                new ClassLoaderAsset("META-INF/beans.xml", Main.class.getClassLoader()), "beans.xml");
+        deployment.addAllDependencies();
+        deployment.addPackage("com.simplerest.simplerest.rest");
+        deployment.addPackage("com.simplerest.simplerest.rest.entity");
 
         swarm.start().deploy(deployment);
     }
