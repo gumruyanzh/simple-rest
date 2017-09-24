@@ -1,4 +1,4 @@
-package com.simplerest.simplerest.rest;
+package com.simplerest.simplerest.rest.service;
 
 
 import com.simplerest.simplerest.rest.entity.EmployeeEntity;
@@ -12,7 +12,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Stateless
-public class EmployeeService {
+public class EmployeeServiceImpl implements EmployeeService {
 
     @PersistenceContext(name = "primary")
     private EntityManager em;
@@ -22,15 +22,15 @@ public class EmployeeService {
     }
 
     @Transactional
-    void addNewEmployee(EmployeeEntity employeeEntity){
+    public void addNewEmployee(EmployeeEntity employeeEntity){
         em.merge(employeeEntity);
     }
 
-    EmployeeEntity findById(int id){
+    public EmployeeEntity findById(int id){
         return em.find(EmployeeEntity.class, id);
     }
 
-    EmployeeEntity updateEmployee(EmployeeEntity employeeEntity){
+    public EmployeeEntity updateEmployee(EmployeeEntity employeeEntity){
         return em.merge(employeeEntity);
     }
 }

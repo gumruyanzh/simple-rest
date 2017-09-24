@@ -1,5 +1,6 @@
 package com.simplerest.simplerest.rest;
 
+import com.simplerest.simplerest.rest.api.EmployeeResource;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.ClassLoaderAsset;
 import org.wildfly.swarm.Swarm;
@@ -29,6 +30,8 @@ public class Main {
         deployment.addAllDependencies();
         deployment.addPackage("com.simplerest.simplerest.rest");
         deployment.addPackage("com.simplerest.simplerest.rest.entity");
+        deployment.addPackage("com.simplerest.simplerest.rest.api");
+        deployment.addPackage("com.simplerest.simplerest.rest.service");
 
         swarm.start().deploy(deployment);
     }

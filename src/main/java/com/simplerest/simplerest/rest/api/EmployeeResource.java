@@ -1,12 +1,13 @@
-package com.simplerest.simplerest.rest;
+package com.simplerest.simplerest.rest.api;
 
 
+import com.simplerest.simplerest.rest.service.EmployeeService;
+import com.simplerest.simplerest.rest.service.EmployeeServiceImpl;
 import com.simplerest.simplerest.rest.entity.EmployeeEntity;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/employee")
