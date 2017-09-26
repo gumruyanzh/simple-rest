@@ -1,6 +1,7 @@
 package com.simplerest.simplerest.rest;
 
 import com.simplerest.simplerest.rest.api.EmployeeResource;
+import com.simplerest.simplerest.rest.authentication.AuthenticationEndpoint;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.ClassLoaderAsset;
 import org.wildfly.swarm.Swarm;
@@ -20,6 +21,8 @@ public class Main {
         deployment.addResource(HelloWorldEndpoint.class);
         deployment.addResource(MyResource.class);
         deployment.addResource(EmployeeResource.class);
+        deployment.addResource(AuthenticationEndpoint.class);
+        deployment.addResource(UserEndpoint.class);
 
         // WEB Resources
         deployment.addAsWebInfResource(
@@ -32,6 +35,10 @@ public class Main {
         deployment.addPackage("com.simplerest.simplerest.rest.entity");
         deployment.addPackage("com.simplerest.simplerest.rest.api");
         deployment.addPackage("com.simplerest.simplerest.rest.service");
+        deployment.addPackage("com.simplerest.simplerest.rest.authentication");
+        deployment.addPackage("com.simplerest.simplerest.rest.authentication.service");
+        deployment.addPackage("com.simplerest.simplerest.rest.jwt");
+        deployment.addPackage("com.simplerest.simplerest.rest.util");
 
         swarm.start().deploy(deployment);
     }
