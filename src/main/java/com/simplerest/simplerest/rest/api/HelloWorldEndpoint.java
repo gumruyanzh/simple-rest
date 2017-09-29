@@ -1,4 +1,4 @@
-package com.simplerest.simplerest.rest;
+package com.simplerest.simplerest.rest.api;
 
 
 import com.simplerest.simplerest.rest.jwt.JWTTokenNeeded;

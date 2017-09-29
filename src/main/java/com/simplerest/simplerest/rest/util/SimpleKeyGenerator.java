@@ -1,14 +1,16 @@
 package com.simplerest.simplerest.rest.util;
 
+
+
+
 import javax.crypto.spec.SecretKeySpec;
+import javax.inject.Inject;
 import java.security.Key;
+import java.util.Map;
 
 
 public class SimpleKeyGenerator implements KeyGenerator {
 
-    // ======================================
-    // =          Business methods          =
-    // ======================================
 
     @Override
     public Key generateKey() {

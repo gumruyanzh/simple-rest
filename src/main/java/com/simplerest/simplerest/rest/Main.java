@@ -1,6 +1,10 @@
 package com.simplerest.simplerest.rest;
 
 import com.simplerest.simplerest.rest.api.EmployeeResource;
+
+import com.simplerest.simplerest.rest.api.HelloWorldEndpoint;
+import com.simplerest.simplerest.rest.api.MyResource;
+import com.simplerest.simplerest.rest.api.UserEndpoint;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.ClassLoaderAsset;
 import org.wildfly.swarm.Swarm;

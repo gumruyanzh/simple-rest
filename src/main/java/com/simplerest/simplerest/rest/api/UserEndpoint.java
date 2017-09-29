@@ -1,4 +1,4 @@
-package com.simplerest.simplerest.rest;
+package com.simplerest.simplerest.rest.api;
 
 import com.simplerest.simplerest.rest.entity.User;
 import com.simplerest.simplerest.rest.util.KeyGenerator;
@@ -131,9 +131,6 @@ public class UserEndpoint {
         return Response.noContent().build();
     }
 
-    // ======================================
-    // =          Private methods           =
-    // ======================================
 
     private Date toDate(LocalDateTime localDateTime) {
         return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());

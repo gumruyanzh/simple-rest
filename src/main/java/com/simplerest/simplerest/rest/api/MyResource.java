@@ -1,4 +1,4 @@
-package com.simplerest.simplerest.rest;
+package com.simplerest.simplerest.rest.api;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
